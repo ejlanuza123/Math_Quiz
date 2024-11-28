@@ -123,5 +123,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="submit" value="Submit">
     </form>
     <a href="leaderboard.php">View Leaderboard</a>
+    <a href="logout.php">Logout</a>
 </body>
 </html>
