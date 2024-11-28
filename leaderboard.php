@@ -68,10 +68,8 @@ $result = $conn->query($sql);
             background-color: #f1f1f1;
         }
 
-        /* Logout Button */
-        .logout-btn {
-            background-color: #dc3545;
-            color: white;
+        /* Button Styles */
+        .btn {
             padding: 12px 20px;
             border: none;
             font-size: 16px;
@@ -84,7 +82,23 @@ $result = $conn->query($sql);
             transition: background-color 0.3s;
         }
 
-        .logout-btn:hover {
+        /* Back to Quiz Button */
+        .btn-quiz {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-quiz:hover {
+            background-color: #0056b3;
+        }
+
+        /* Logout Button */
+        .btn-logout {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-logout:hover {
             background-color: #c82333;
         }
 
@@ -122,12 +136,14 @@ $result = $conn->query($sql);
             ?>
         </table>
 
-        <!-- Logout Button -->
+        <!-- Back to Quiz Button -->
         <a href="quiz.php">
-            <button class="logout-btn">Back to Quiz</button>
+            <button class="btn btn-quiz">Back to Quiz</button>
         </a>
+
+        <!-- Logout Button -->
         <a href="logout.php">
-            <button class="logout-btn">Logout</button>
+            <button class="btn btn-logout">Logout</button>
         </a>
     </div>
 </body>
