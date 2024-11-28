@@ -1,11 +1,14 @@
 <?php
-include('db.php');
+include("db.php");
 
-// Fetch leaderboard data
-$sql = "SELECT u.username, l.score, l.attempted_at FROM leaderboard l
-        JOIN users u ON l.user_id = u.id
-        ORDER BY l.score DESC LIMIT 10";
+// Query to get the top 10 scorers
+$sql = "SELECT users.username, scores.score FROM scores
+        JOIN users ON scores.user_id = users.id
+        ORDER BY scores.score DESC
+        LIMIT 10";
+
 $result = $conn->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,17 +22,22 @@ $result = $conn->query($sql);
     <h1>Leaderboard</h1>
     <table border="1">
         <tr>
+            <th>Rank</th>
             <th>Username</th>
             <th>Score</th>
-            <th>Attempted At</th>
         </tr>
-        <?php while ($row = $result->fetch_assoc()): ?>
-            <tr>
-                <td><?php echo $row['username']; ?></td>
-                <td><?php echo $row['score']; ?></td>
-                <td><?php echo $row['attempted_at']; ?></td>
-            </tr>
-        <?php endwhile; ?>
+        <?php
+        $rank = 1;
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $rank++ . "</td>";
+            echo "<td>" . $row['username'] . "</td>";
+            echo "<td>" . $row['score'] . "</td>";
+            echo "</tr>";
+        }
+        ?>
     </table>
+    <br>
+    <a href="quiz.php">Back to Quiz</a>
 </body>
 </html>
