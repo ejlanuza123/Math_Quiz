@@ -1,6 +1,4 @@
 <?php
-
-
 // Start session for user authentication
 session_start();
 include ("db.php");
@@ -105,24 +103,130 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Quiz</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+            padding: 30px;
+            box-sizing: border-box;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: inline-block;
+            text-align: center;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #218838;
+        }
+
+        .score {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>High School Math Quiz</h1>
-    <form method="post" action="">
-        <?php foreach ($questions as $index => $question): ?>
-            <fieldset>
-                <legend><?php echo $question['question']; ?></legend>
-                <?php foreach ($question['options'] as $optionIndex => $option): ?>
-                    <label>
-                        <input type="radio" name="question<?php echo $index; ?>" value="<?php echo $optionIndex; ?>">
-                        <?php echo $option; ?>
-                    </label><br>
-                <?php endforeach; ?>
-            </fieldset>
-        <?php endforeach; ?>
-        <input type="submit" value="Submit">
-    </form>
-    <a href="leaderboard.php">View Leaderboard</a>
-    <a href="logout.php">Logout</a>
+    <div class="container">
+        <h1>Math Quiz</h1>
+        <form method="post" action="">
+            <?php foreach ($questions as $index => $question): ?>
+                <fieldset>
+                    <legend><?php echo $question['question']; ?></legend>
+                    <?php foreach ($question['options'] as $optionIndex => $option): ?>
+                        <label>
+                            <input type="radio" name="question<?php echo $index; ?>" value="<?php echo $optionIndex; ?>" required>
+                            <?php echo $option; ?>
+                        </label>
+                    <?php endforeach; ?>
+                </fieldset>
+            <?php endforeach; ?>
+            <input type="submit" value="Submit">
+        </form>
+        <a href="leaderboard.php">View Leaderboard</a>
+        <a href="logout.php">Logout</a>
+    </div>
 </body>
 </html>
