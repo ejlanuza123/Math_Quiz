@@ -90,12 +90,106 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $stmt->close();
 
-    echo "<h2>Your Score: $score/" . count($questions) . "</h2>";
-    echo '<a href="quiz.php">Try Again</a>';
-    echo '<a href="leaderboard.php">View Leaderboard</a>';
+    echo <<<HTML
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Math Quiz - Score</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f7fc;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                color: #333;
+            }
+
+            .score-container {
+                text-align: center;
+                background-color: #fff;
+                border-radius: 15px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 30px 20px;
+                max-width: 400px;
+                width: 90%;
+                animation: fadeIn 1s ease-in-out;
+            }
+
+            .score-container h2 {
+                font-size: 28px;
+                color: #007bff;
+                margin-bottom: 15px;
+                text-transform: uppercase;
+                animation: popIn 0.6s ease-in-out;
+            }
+
+            .score-container .score {
+                font-size: 48px;
+                color: #28a745;
+                font-weight: bold;
+                margin: 10px 0;
+                animation: popIn 0.6s ease-in-out;
+            }
+
+            .score-container a {
+                display: inline-block;
+                margin: 10px;
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s ease-in-out;
+            }
+
+            .score-container a:hover {
+                background-color: #0056b3;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes popIn {
+                from {
+                    transform: scale(0.8);
+                    opacity: 0;
+                }
+                to {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="score-container">
+            <h2>Congratulations!</h2>
+            <div class="score">$score / ${count($questions)}</div>
+            <a href="index.php">Try Again</a>
+            <a href="leaderboard.php">View Leaderboard</a>
+        </div>
+    </body>
+    </html>
+    HTML;
     exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
