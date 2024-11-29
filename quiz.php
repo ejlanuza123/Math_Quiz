@@ -178,8 +178,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </head>
     <body>
         <div class="score-container">
-            <h2>Congratulations!</h2>
-            <div class="score">$score / ${count($questions)}</div>
+            <h2>Your Score!</h2>
+            <div class="score">$score/10</div>
             <a href="quiz.php">Try Again</a>
             <a href="leaderboard.php">View Leaderboard</a>
         </div>
