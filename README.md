@@ -20,13 +20,13 @@ Follow these steps to set up the project locally:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/math-quiz-web-app.git
+   git clone https://github.com/your-username/Math_Quiz.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd math-quiz-web-app
+   cd Math_Quiz
    ```
 
 3. Ensure you have a PHP and MySQL server running. You can use tools like XAMPP or WAMP to set up a local server.
@@ -44,7 +44,7 @@ Follow these steps to set up the project locally:
 
 ## Files Structure
 
-- **`index.php`**: Main page displaying the math quiz.
+- **`quiz.php`**: Main page displaying the math quiz.
 - **`db.php`**: Database connection file where database credentials are stored.
 - **`leaderboard.php`**: Page to view the leaderboard.
 - **`login.php`**: User login page.
